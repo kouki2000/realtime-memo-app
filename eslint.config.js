@@ -35,6 +35,7 @@ export default [
       'no-console': 'warn',
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
+      indent: ['error', 2],
     },
   },
   {
