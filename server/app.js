@@ -17,5 +17,5 @@ app.use(express.json());
 // Phase 1: 動作確認用のヘルスチェックエンドポイント
 // Phase 2以降で routes/ に移動する
 app.get('/api/health', (_req, res) => {
-    res.json({ success: true, data: { status: 'ok' } });
+  res.json({ success: true, data: { status: 'ok' } });
 });

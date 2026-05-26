@@ -22,20 +22,20 @@ const MIGRATION_PATH = join(__dirname, 'migrations/001_init.sql');
  * @returns {import('better-sqlite3').Database} 初期化済みDBインスタンス
  */
 const initDatabase = () => {
-    const db = new Database(DB_PATH);
+  const db = new Database(DB_PATH);
 
-    // WALモードを有効化（読み書きの同時実行性が向上する）
-    db.pragma('journal_mode = WAL');
+  // WALモードを有効化（読み書きの同時実行性が向上する）
+  db.pragma('journal_mode = WAL');
 
-    // 外部キー制約を有効化（SQLiteはデフォルト無効）
-    db.pragma('foreign_keys = ON');
+  // 外部キー制約を有効化（SQLiteはデフォルト無効）
+  db.pragma('foreign_keys = ON');
 
-    // マイグレーションSQLを読み込んで実行する
-    // IF NOT EXISTS で冪等性を保証しているため、起動のたびに実行しても安全
-    const migration = readFileSync(MIGRATION_PATH, 'utf8');
-    db.exec(migration);
+  // マイグレーションSQLを読み込んで実行する
+  // IF NOT EXISTS で冪等性を保証しているため、起動のたびに実行しても安全
+  const migration = readFileSync(MIGRATION_PATH, 'utf8');
+  db.exec(migration);
 
-    return db;
+  return db;
 };
 
 // シングルトンとしてエクスポートする

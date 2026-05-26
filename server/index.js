@@ -14,15 +14,15 @@ const PORT = process.env.PORT ?? 3000;
 
 // サーバー起動
 app.listen(PORT, () => {
-    // NOTE: ここだけはconsole.logを許容する（起動確認のための出力）
-    // eslint-disable-next-line no-console
-    console.log(`サーバー起動: http://localhost:${PORT}`);
-    // eslint-disable-next-line no-console
-    console.log('DB初期化完了: data/app.db');
+  // NOTE: ここだけはconsole.logを許容する（起動確認のための出力）
+  // eslint-disable-next-line no-console
+  console.log(`サーバー起動: http://localhost:${PORT}`);
+  // eslint-disable-next-line no-console
+  console.log('DB初期化完了: data/app.db');
 });
 
 // プロセス終了時にDBを安全にクローズする
 process.on('SIGINT', () => {
-    db.close();
-    process.exit(0);
+  db.close();
+  process.exit(0);
 });
